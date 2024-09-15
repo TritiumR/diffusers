@@ -1,0 +1,5 @@
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files:   7%|▋         | 1/15 [00:00<00:01,  8.31it/s]Fetching 15 files:  27%|██▋       | 4/15 [00:19<00:56,  5.17s/it]Fetching 15 files:  87%|████████▋ | 13/15 [00:53<00:08,  4.12s/it]Fetching 15 files: 100%|██████████| 15/15 [00:53<00:00,  3.57s/it]
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]/var/spool/slurmd/job5139262/slurm_script: line 16: 1805073 Killed                  python test.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=5139262.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

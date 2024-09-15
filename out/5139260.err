@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/cn356/diffusers/test.py", line 4, in <module>
+    pipeline = DiffusionPipeline.from_pretrained("botp/stable-diffusion-v1-5", torch_dtype=torch.float16)
+  File "/home/cn356/.conda/envs/diffuser/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/cn356/.conda/envs/diffuser/lib/python3.9/site-packages/diffusers/pipelines/pipeline_utils.py", line 699, in from_pretrained
+    cached_folder = cls.download(
+  File "/home/cn356/.conda/envs/diffuser/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/cn356/.conda/envs/diffuser/lib/python3.9/site-packages/diffusers/pipelines/pipeline_utils.py", line 1433, in download
+    use_onnx = use_onnx if use_onnx is not None else pipeline_class._is_onnx
+  File "/home/cn356/.conda/envs/diffuser/lib/python3.9/site-packages/diffusers/utils/import_utils.py", line 665, in __getattr__
+    requires_backends(cls, cls._backends)
+  File "/home/cn356/.conda/envs/diffuser/lib/python3.9/site-packages/diffusers/utils/import_utils.py", line 633, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+StableDiffusionPipeline requires the transformers library but it was not found in your environment. You can install it with pip: `pip
+install transformers`
+

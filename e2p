@@ -1,0 +1,62 @@
+import pathlib
+
+from PIL import Image
+import numpy as np
+
+from equilib import equi2pers
+
+
+def load_image(path, channel_first=True):
+    image = Image.open(path)
+    image = np.asarray(image)
+    if channel_first:
+        image = np.transpose(image, (2, 0, 1))
+    return image
+
+
+def save_image(image, path, channel_first=True):
+    if channel_first:
+        image = np.transpose(image, (1, 2, 0))
+    image = Image.fromarray(image)
+    image.save(path)
+
+
+def to_perspective(
+    equi_image,
+    roll=0.0,
+    pitch=0.0,
+    yaw=0.0,
+    height=480,
+    width=640,
+    fov_x=90,
+    mode="bilinear",
+):
+    params = {
+        "rots": {
+            "roll": roll,
+            "pitch": pitch,  # rotate vertical (radian, e.g., np.pi / 4)
+            "yaw": yaw,  # rotate horizontal (radian, e.g., np.pi / 4)
+        },
+        "height": height,
+        "width": width,
+        "fov_x": fov_x,
+        "mode": mode,
+        "z_down": True
+    }
+    pers_image = equi2pers(equi=equi_image, **params)
+    return pers_image
+
+
+def main():
+    frame_dir = pathlib.Path("data/frames")
+    output_dir = pathlib.Path("result")
+    output_dir.mkdir(exist_ok=True)
+
+    for frame_path in frame_dir.glob("*.png"):
+        equi_image = load_image(frame_path)
+        pers_image = to_perspective(equi_image)
+        dump_image(pers_image, output_dir / frame_path.name)
+
+
+if __name__ == "__main__":
+    main()
